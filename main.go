@@ -24,7 +24,9 @@ func removeAh(s string) string {
 }
 
 func main() {
-	file, err := os.Open("myactions.json")
+	filename := ReadDir()
+
+	file, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -53,7 +55,6 @@ func main() {
 	if err := writer.Write(header); err != nil {
 		log.Fatal(err)
 	}
-	// var c = []byte("Â")
 
 	for _, r := range acts {
 		var csvRow []string
